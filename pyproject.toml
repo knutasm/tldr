@@ -4,7 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tldr"
-dynamic = ["version"]
+# dynamic = ["version"]
+version = "0.1.0"
 description = ''
 readme = "README.md"
 requires-python = ">=3.8"
@@ -30,6 +31,15 @@ dependencies = [
 
 [tool.hatch.envs.default]
 installer = "uv"
+
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version_provider = "pep621"
+update_changelog_on_bump = true
+major_version_zero = true
 
 [project.urls]
 Documentation = "https://github.com/Knut Arne Smeland/tldr#readme"
@@ -63,4 +73,9 @@ exclude_lines = [
   "no cov",
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
+]
+
+[dependency-groups]
+dev = [
+    "commitizen>=3.31.0",
 ]
